@@ -1,25 +1,41 @@
 # 🧠 Fall Detection using Logistic Regression
 
-> A machine learning project focused on detecting fall events in elderly individuals using smartphone sensor data.
+![Python](https://img.shields.io/badge/Python-3.9-blue)
+![ML](https://img.shields.io/badge/Machine%20Learning-Logistic%20Regression-green)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
 
 ---
 
-## 📌 Problem Statement
+## 📌 Project Overview
 
-Falls among elderly individuals can lead to severe health risks and long-term complications. Early detection using sensor-based systems can significantly improve response time and reduce damage.
+This project focuses on detecting falls in elderly individuals using smartphone sensor data. Falls are a major health concern and can lead to serious physical, psychological, and financial consequences.
 
-This project builds a **classification model** to distinguish between:
+The objective is to build a **machine learning classification model** that can accurately distinguish between:
 
 * **Fall events (1)**
-* **Normal daily activities (ADL) (-1)**
+* **Activities of Daily Living (ADL) (-1)**
 
 ---
 
 ## 🏗️ Project Pipeline
 
 ```
-Raw Sensor Data → Preprocessing → Feature Normalization → Feature Selection → Model Training → Evaluation
+Raw Data → Preprocessing → Normalization → Feature Selection → Logistic Regression → Evaluation
 ```
+
+---
+
+## 📊 Dataset
+
+* Total observations: **353**
+* Total features: **21–22**
+* Target variable:
+
+  * **-1 → ADL (Normal Activity)**
+  * **1 → Fall**
+
+⚠️ **Dataset Notice:**
+The dataset (`FallData_FD_KMP.xlsx`) was provided as part of a university assignment and is not publicly available. Therefore, it is not included in this repository.
 
 ---
 
@@ -27,53 +43,92 @@ Raw Sensor Data → Preprocessing → Feature Normalization → Feature Selectio
 
 ### 1️⃣ Data Preprocessing
 
-* Cleaned and structured dataset
-* Handled feature scaling using normalization techniques
+* Structured and cleaned dataset
+* Applied normalization to scale features
 
-### 2️⃣ Feature Engineering
+### 2️⃣ Feature Selection
 
-* Applied feature selection techniques to reduce dimensionality
-* Identified most impactful features for fall detection
+* Applied feature selection techniques
+* Observed feature importance via model coefficients
 
 ### 3️⃣ Model Building
 
 * Implemented **Logistic Regression**
-* Used **K-Fold Cross Validation** to ensure robust performance
+* Applied **K-Fold Cross Validation** for robust evaluation
 
 ### 4️⃣ Evaluation Metrics
 
-* ✅ Accuracy
-* ✅ Sensitivity (Recall for falls)
-* ✅ Specificity
+* Accuracy
+* Sensitivity (Recall for Fall detection)
+* Specificity
 
 ---
 
-## 📊 Results & Insights
+## 📊 Results & Performance
 
-* Logistic Regression performed effectively for binary classification
-* Feature selection improved model efficiency and reduced overfitting
-* Cross-validation ensured consistent performance across folds
+The model was evaluated using K-Fold Cross Validation. Below are the summarized results:
 
-*(Tip: You can add your actual accuracy numbers here later for stronger impact)*
+### 🔢 Model Performance
 
----
-
-## 📁 Repository Structure
-
-```
-📦 Logistic-Regression-Fall-Detection
- ┣ 📜 Saad400692 A2.ipynb
- ┣ 📜 README.md
- ┗ 📜 (Dataset not included)
-```
+* **Number of Features Used:** 22
+* **Model Accuracy:** 1.0
+* **Sensitivity:** 1.0
+* **Specificity:** 1.0
 
 ---
 
-## ⚠️ Dataset Disclaimer
+### 📌 Observations
 
-The dataset used in this project (`FallData_FD_KMP.xlsx`) was provided as part of a university assignment and is not publicly available.
+* The model achieved **perfect accuracy (1.0)** in multiple folds.
+* However, in several folds:
 
-If you want to replicate this project, you can use similar publicly available fall detection datasets (e.g., smartphone sensor datasets).
+  * Sensitivity = 0.0
+  * Specificity = 0.0
+
+👉 This indicates that the model may have:
+
+* Predicted only one class in certain folds
+* Faced **class imbalance issues**
+* Experienced **overfitting due to small dataset size**
+
+---
+
+### ⚠️ Important Insight
+
+Although some folds show perfect performance:
+
+* Accuracy = 1.0
+* Sensitivity = 1.0
+* Specificity = 1.0
+
+These results may not generalize well due to:
+
+* Limited dataset size (353 samples)
+* Lack of external validation
+
+---
+
+## 🧠 Key Learnings
+
+* Practical implementation of Logistic Regression
+* Importance of evaluating models beyond accuracy
+* Understanding class imbalance and its impact
+* Application of K-Fold Cross Validation
+
+---
+
+## 🔥 Future Improvements
+
+* Use **Stratified K-Fold** instead of standard K-Fold
+* Handle class imbalance (SMOTE / class weights)
+* Try advanced models:
+
+  * Random Forest
+  * Support Vector Machine (SVM)
+  * XGBoost
+* Add confusion matrix visualization
+* Use a public dataset for reproducibility
+* Deploy using Streamlit
 
 ---
 
@@ -89,21 +144,14 @@ If you want to replicate this project, you can use similar publicly available fa
 
 ---
 
-## 💡 Key Learnings
+## 📁 Repository Structure
 
-* Practical implementation of Logistic Regression
-* Importance of feature selection in ML models
-* Real-world application of cross-validation
-* Working with health-related datasets
-
----
-
-## 🔥 Future Improvements
-
-* Replace dataset with a public dataset (e.g., Kaggle)
-* Try advanced models (Random Forest, SVM, XGBoost)
-* Deploy as a web app using Streamlit
-* Add real-time fall detection system
+```
+📦 fall-detection-logistic-regression
+ ┣ 📜 Saad400692 A2.ipynb
+ ┣ 📜 README.md
+ ┗ 📜 (Dataset not included)
+```
 
 ---
 
@@ -113,3 +161,6 @@ If you want to replicate this project, you can use similar publicly available fa
 pip install pandas numpy matplotlib scikit-learn
 jupyter notebook
 ```
+
+---
+
